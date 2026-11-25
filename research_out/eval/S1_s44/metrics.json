@@ -1,0 +1,544 @@
+{
+  "generated_at": "2026-11-25T21:41:47",
+  "model": "research_out/runs/S1_s44/weights/best.pt",
+  "split_dir": "D:\\tea-action\\research_out\\open_set\\S1",
+  "known_classes": [
+    "Black rot",
+    "Brown blight",
+    "Red Spider",
+    "Tea Mosquito bug",
+    "Healthy",
+    "White spot"
+  ],
+  "n_known_classes": 6,
+  "model_classes": {
+    "0": "Black rot",
+    "1": "Brown blight",
+    "2": "Red Spider",
+    "3": "Tea Mosquito bug",
+    "4": "Healthy",
+    "5": "White spot"
+  },
+  "class_mapping": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5
+  },
+  "imgsz": 640,
+  "conf": 0.25,
+  "iou": 0.5,
+  "device": "0",
+  "calib_ratio": 0.05,
+  "cost_mis": 10.0,
+  "cost_ref": 1.0,
+  "protocol": {
+    "calib_images": 294,
+    "eval_images": 293,
+    "unknown_images": 2584,
+    "calib_source": "auto"
+  },
+  "scorers_requested": [
+    "msp",
+    "entropy",
+    "energy",
+    "mahalanobis",
+    "proto",
+    "fusion"
+  ],
+  "scorers_available": [
+    "msp",
+    "entropy",
+    "energy",
+    "mahalanobis",
+    "proto",
+    "fusion"
+  ],
+  "scorer_unavailable": {},
+  "data": {
+    "known_val_images": 587,
+    "unknown_val_images": 2584,
+    "known_boxes": 371,
+    "calib_boxes": 370,
+    "unknown_gt_boxes": 3641,
+    "unknown_detected_boxes": 2448,
+    "anchor_parse_failures": 0
+  },
+  "rq1": {
+    "closed_set_misdiagnosis_rate": 0.6723,
+    "unknown_mean_conf": 0.646,
+    "known_mean_conf": 0.8797,
+    "unknown_detected_boxes": 2448,
+    "unknown_gt_boxes": 3641
+  },
+  "rq2": {
+    "msp": {
+      "n_known": 371,
+      "n_unknown": 2448,
+      "auroc": 0.9039,
+      "auprc": 0.9842,
+      "fpr_at_95tpr": 0.5499
+    },
+    "entropy": {
+      "n_known": 371,
+      "n_unknown": 2448,
+      "auroc": 0.9257,
+      "auprc": 0.988,
+      "fpr_at_95tpr": 0.4798
+    },
+    "energy": {
+      "n_known": 371,
+      "n_unknown": 2448,
+      "auroc": 0.0963,
+      "auprc": 0.8684,
+      "fpr_at_95tpr": 1.0
+    },
+    "mahalanobis": {
+      "n_known": 371,
+      "n_unknown": 2448,
+      "auroc": 0.9556,
+      "auprc": 0.9901,
+      "fpr_at_95tpr": 0.1078
+    },
+    "proto": {
+      "n_known": 371,
+      "n_unknown": 2448,
+      "auroc": 0.5175,
+      "auprc": 0.8891,
+      "fpr_at_95tpr": 0.8733
+    },
+    "fusion": {
+      "n_known": 371,
+      "n_unknown": 2448,
+      "auroc": 0.9734,
+      "auprc": 0.994,
+      "fpr_at_95tpr": 0.0431
+    }
+  },
+  "rejection": {
+    "msp": {
+      "tau_calib": 0.198574,
+      "calib": {
+        "tau": 0.198574,
+        "known_boxes": 371,
+        "known_false_rejection": 17,
+        "known_false_rejection_rate": 0.0458,
+        "unknown_gt_boxes": 3641,
+        "unknown_detected_boxes": 2448,
+        "unknown_rejected": 1649,
+        "unknown_recall": 0.4529,
+        "unknown_recall_detected": 0.6736,
+        "misdiagnosed_boxes": 799,
+        "misdiagnosis_rate": 0.2194,
+        "undetected_rate": 0.3277,
+        "referred_boxes": 1666,
+        "referral_rate": 0.591,
+        "expected_cost": 9656.0
+      },
+      "tau_cost": 0.0729,
+      "cost": 2802.0,
+      "cost_optimal": {
+        "tau": 0.072888,
+        "known_boxes": 371,
+        "known_false_rejection": 354,
+        "known_false_rejection_rate": 0.9542,
+        "unknown_gt_boxes": 3641,
+        "unknown_detected_boxes": 2448,
+        "unknown_rejected": 2448,
+        "unknown_recall": 0.6723,
+        "unknown_recall_detected": 1.0,
+        "misdiagnosed_boxes": 0,
+        "misdiagnosis_rate": 0.0,
+        "undetected_rate": 0.3277,
+        "referred_boxes": 2802,
+        "referral_rate": 0.994,
+        "expected_cost": 2802.0
+      }
+    },
+    "entropy": {
+      "tau_calib": 0.177945,
+      "calib": {
+        "tau": 0.177945,
+        "known_boxes": 371,
+        "known_false_rejection": 18,
+        "known_false_rejection_rate": 0.0485,
+        "unknown_gt_boxes": 3641,
+        "unknown_detected_boxes": 2448,
+        "unknown_rejected": 1807,
+        "unknown_recall": 0.4963,
+        "unknown_recall_detected": 0.7382,
+        "misdiagnosed_boxes": 641,
+        "misdiagnosis_rate": 0.1761,
+        "undetected_rate": 0.3277,
+        "referred_boxes": 1825,
+        "referral_rate": 0.6474,
+        "expected_cost": 8235.0
+      },
+      "tau_cost": 0.0738,
+      "cost": 2798.0,
+      "cost_optimal": {
+        "tau": 0.073781,
+        "known_boxes": 371,
+        "known_false_rejection": 350,
+        "known_false_rejection_rate": 0.9434,
+        "unknown_gt_boxes": 3641,
+        "unknown_detected_boxes": 2448,
+        "unknown_rejected": 2448,
+        "unknown_recall": 0.6723,
+        "unknown_recall_detected": 1.0,
+        "misdiagnosed_boxes": 0,
+        "misdiagnosis_rate": 0.0,
+        "undetected_rate": 0.3277,
+        "referred_boxes": 2798,
+        "referral_rate": 0.9926,
+        "expected_cost": 2798.0
+      }
+    },
+    "energy": {
+      "tau_calib": 2.509069,
+      "calib": {
+        "tau": 2.509069,
+        "known_boxes": 371,
+        "known_false_rejection": 18,
+        "known_false_rejection_rate": 0.0485,
+        "unknown_gt_boxes": 3641,
+        "unknown_detected_boxes": 2448,
+        "unknown_rejected": 0,
+        "unknown_recall": 0.0,
+        "unknown_recall_detected": 0.0,
+        "misdiagnosed_boxes": 2448,
+        "misdiagnosis_rate": 0.6723,
+        "undetected_rate": 0.3277,
+        "referred_boxes": 18,
+        "referral_rate": 0.0064,
+        "expected_cost": 24498.0
+      },
+      "tau_cost": -1.0877,
+      "cost": 2819.0,
+      "cost_optimal": {
+        "tau": -1.08766,
+        "known_boxes": 371,
+        "known_false_rejection": 371,
+        "known_false_rejection_rate": 1.0,
+        "unknown_gt_boxes": 3641,
+        "unknown_detected_boxes": 2448,
+        "unknown_rejected": 2448,
+        "unknown_recall": 0.6723,
+        "unknown_recall_detected": 1.0,
+        "misdiagnosed_boxes": 0,
+        "misdiagnosis_rate": 0.0,
+        "undetected_rate": 0.3277,
+        "referred_boxes": 2819,
+        "referral_rate": 1.0,
+        "expected_cost": 2819.0
+      }
+    },
+    "mahalanobis": {
+      "tau_calib": 300.948204,
+      "calib": {
+        "tau": 300.948204,
+        "known_boxes": 371,
+        "known_false_rejection": 106,
+        "known_false_rejection_rate": 0.2857,
+        "unknown_gt_boxes": 3641,
+        "unknown_detected_boxes": 2448,
+        "unknown_rejected": 2448,
+        "unknown_recall": 0.6723,
+        "unknown_recall_detected": 1.0,
+        "misdiagnosed_boxes": 0,
+        "misdiagnosis_rate": 0.0,
+        "undetected_rate": 0.3277,
+        "referred_boxes": 2554,
+        "referral_rate": 0.906,
+        "expected_cost": 2554.0
+      },
+      "tau_cost": 479.8839,
+      "cost": 2506.0,
+      "cost_optimal": {
+        "tau": 479.883908,
+        "known_boxes": 371,
+        "known_false_rejection": 58,
+        "known_false_rejection_rate": 0.1563,
+        "unknown_gt_boxes": 3641,
+        "unknown_detected_boxes": 2448,
+        "unknown_rejected": 2448,
+        "unknown_recall": 0.6723,
+        "unknown_recall_detected": 1.0,
+        "misdiagnosed_boxes": 0,
+        "misdiagnosis_rate": 0.0,
+        "undetected_rate": 0.3277,
+        "referred_boxes": 2506,
+        "referral_rate": 0.889,
+        "expected_cost": 2506.0
+      }
+    },
+    "proto": {
+      "tau_calib": 0.616595,
+      "calib": {
+        "tau": 0.616595,
+        "known_boxes": 371,
+        "known_false_rejection": 27,
+        "known_false_rejection_rate": 0.0728,
+        "unknown_gt_boxes": 3641,
+        "unknown_detected_boxes": 2448,
+        "unknown_rejected": 282,
+        "unknown_recall": 0.0775,
+        "unknown_recall_detected": 0.1152,
+        "misdiagnosed_boxes": 2166,
+        "misdiagnosis_rate": 0.5949,
+        "undetected_rate": 0.3277,
+        "referred_boxes": 309,
+        "referral_rate": 0.1096,
+        "expected_cost": 21969.0
+      },
+      "tau_cost": 0.1383,
+      "cost": 2807.0,
+      "cost_optimal": {
+        "tau": 0.138255,
+        "known_boxes": 371,
+        "known_false_rejection": 359,
+        "known_false_rejection_rate": 0.9677,
+        "unknown_gt_boxes": 3641,
+        "unknown_detected_boxes": 2448,
+        "unknown_rejected": 2448,
+        "unknown_recall": 0.6723,
+        "unknown_recall_detected": 1.0,
+        "misdiagnosed_boxes": 0,
+        "misdiagnosis_rate": 0.0,
+        "undetected_rate": 0.3277,
+        "referred_boxes": 2807,
+        "referral_rate": 0.9957,
+        "expected_cost": 2807.0
+      }
+    },
+    "fusion": {
+      "tau_calib": 0.425585,
+      "calib": {
+        "tau": 0.425585,
+        "known_boxes": 371,
+        "known_false_rejection": 58,
+        "known_false_rejection_rate": 0.1563,
+        "unknown_gt_boxes": 3641,
+        "unknown_detected_boxes": 2448,
+        "unknown_rejected": 2448,
+        "unknown_recall": 0.6723,
+        "unknown_recall_detected": 1.0,
+        "misdiagnosed_boxes": 0,
+        "misdiagnosis_rate": 0.0,
+        "undetected_rate": 0.3277,
+        "referred_boxes": 2506,
+        "referral_rate": 0.889,
+        "expected_cost": 2506.0
+      },
+      "tau_cost": 0.4426,
+      "cost": 2505.0,
+      "cost_optimal": {
+        "tau": 0.442628,
+        "known_boxes": 371,
+        "known_false_rejection": 57,
+        "known_false_rejection_rate": 0.1536,
+        "unknown_gt_boxes": 3641,
+        "unknown_detected_boxes": 2448,
+        "unknown_rejected": 2448,
+        "unknown_recall": 0.6723,
+        "unknown_recall_detected": 1.0,
+        "misdiagnosed_boxes": 0,
+        "misdiagnosis_rate": 0.0,
+        "undetected_rate": 0.3277,
+        "referred_boxes": 2505,
+        "referral_rate": 0.8886,
+        "expected_cost": 2505.0
+      }
+    }
+  },
+  "selective_prediction": {
+    "scores_direction": "分数越大越像已知（未知度已取负）；覆盖 = 不拒识",
+    "scorers": {
+      "msp": {
+        "n_known": 371,
+        "n_unknown": 2448,
+        "aurc": 0.6785,
+        "e_aurc": 0.0016,
+        "coverage_at_5pct": 0.0082,
+        "coverage_at_10pct": 0.0085,
+        "n_images": 2457,
+        "aurc_image": 0.6935,
+        "e_aurc_image": 0.0019
+      },
+      "entropy": {
+        "n_known": 371,
+        "n_unknown": 2448,
+        "aurc": 0.659,
+        "e_aurc": 0.0014,
+        "coverage_at_5pct": 0.0223,
+        "coverage_at_10pct": 0.0309,
+        "n_images": 2457,
+        "aurc_image": 0.6774,
+        "e_aurc_image": 0.0017
+      },
+      "energy": {
+        "n_known": 371,
+        "n_unknown": 2448,
+        "aurc": 0.9764,
+        "e_aurc": 0.0036,
+        "coverage_at_5pct": 0.0,
+        "coverage_at_10pct": 0.0,
+        "n_images": 2457,
+        "aurc_image": 0.9839,
+        "e_aurc_image": 0.0041
+      },
+      "mahalanobis": {
+        "n_known": 371,
+        "n_unknown": 2448,
+        "aurc": 0.6185,
+        "e_aurc": 0.0012,
+        "coverage_at_5pct": 0.1178,
+        "coverage_at_10pct": 0.1281,
+        "n_images": 2457,
+        "aurc_image": 0.6437,
+        "e_aurc_image": 0.0015
+      },
+      "proto": {
+        "n_known": 371,
+        "n_unknown": 2448,
+        "aurc": 0.8417,
+        "e_aurc": 0.0026,
+        "coverage_at_5pct": 0.0043,
+        "coverage_at_10pct": 0.0046,
+        "n_images": 2457,
+        "aurc_image": 0.8469,
+        "e_aurc_image": 0.003
+      },
+      "fusion": {
+        "n_known": 371,
+        "n_unknown": 2448,
+        "aurc": 0.6112,
+        "e_aurc": 0.0012,
+        "coverage_at_5pct": 0.1234,
+        "coverage_at_10pct": 0.133,
+        "n_images": 2457,
+        "aurc_image": 0.6361,
+        "e_aurc_image": 0.0014
+      }
+    },
+    "image_level": {
+      "implemented": true,
+      "definition": "同图多个框时取最可疑框（未知度最大）代表整图；图内含未知框且未被拒识即记该图错误",
+      "reason": ""
+    },
+    "notes": [
+      "已知框要求同类且 IoU ≥ 0.5，已知侧的类别错误（未匹配 FP）不进入选择集；AURC 只衡量保留已知框 vs 拒识未知框的权衡，属已知简化。",
+      "AURC 为标准定义（覆盖率必到 1，完美分离也不为 0，约等于未知占比）；E-AURC 为相对完美排序基线的超出量，完美分离为 0。两者需同时报告。"
+    ]
+  },
+  "cost_ratio_sweep": {
+    "scorer": "fusion",
+    "cost_ref": 1.0,
+    "n_images": 2877,
+    "recommend_ratio": 10.0,
+    "ratios": [
+      1.0,
+      2.0,
+      5.0,
+      10.0,
+      20.0,
+      50.0,
+      100.0
+    ],
+    "rows": [
+      {
+        "cost_ratio": 1.0,
+        "tau": 1.0,
+        "misdiagnosis_rate": 0.6723,
+        "referral_rate": 0.0,
+        "expected_cost": 2448.0,
+        "expected_cost_per_image": 0.850886
+      },
+      {
+        "cost_ratio": 2.0,
+        "tau": 0.5387,
+        "misdiagnosis_rate": 0.0044,
+        "referral_rate": 0.8769,
+        "expected_cost": 2504.0,
+        "expected_cost_per_image": 0.870351
+      },
+      {
+        "cost_ratio": 5.0,
+        "tau": 0.4426,
+        "misdiagnosis_rate": 0.0,
+        "referral_rate": 0.8886,
+        "expected_cost": 2505.0,
+        "expected_cost_per_image": 0.870699
+      },
+      {
+        "cost_ratio": 10.0,
+        "tau": 0.4426,
+        "misdiagnosis_rate": 0.0,
+        "referral_rate": 0.8886,
+        "expected_cost": 2505.0,
+        "expected_cost_per_image": 0.870699
+      },
+      {
+        "cost_ratio": 20.0,
+        "tau": 0.4426,
+        "misdiagnosis_rate": 0.0,
+        "referral_rate": 0.8886,
+        "expected_cost": 2505.0,
+        "expected_cost_per_image": 0.870699
+      },
+      {
+        "cost_ratio": 50.0,
+        "tau": 0.4426,
+        "misdiagnosis_rate": 0.0,
+        "referral_rate": 0.8886,
+        "expected_cost": 2505.0,
+        "expected_cost_per_image": 0.870699
+      },
+      {
+        "cost_ratio": 100.0,
+        "tau": 0.4426,
+        "misdiagnosis_rate": 0.0,
+        "referral_rate": 0.8886,
+        "expected_cost": 2505.0,
+        "expected_cost_per_image": 0.870699
+      }
+    ],
+    "recommend": {
+      "cost_ratio": 10.0,
+      "tau": 0.4426,
+      "misdiagnosis_rate": 0.0,
+      "referral_rate": 0.8886,
+      "expected_cost": 2505.0,
+      "expected_cost_per_image": 0.870699
+    }
+  },
+  "known_map": {
+    "map50": 0.9503690702305898,
+    "map50_95": 0.6650961161352724,
+    "per_class": {
+      "Black rot": 0.6,
+      "Red Spider": 0.6806,
+      "Tea Mosquito bug": 0.6345,
+      "Healthy": 0.7892,
+      "White spot": 0.6212
+    },
+    "n_gt": {
+      "Black rot": 3,
+      "Red Spider": 39,
+      "Tea Mosquito bug": 294,
+      "Healthy": 31,
+      "White spot": 18
+    }
+  },
+  "anchor_iou_median": 0.9999999961936846,
+  "primary_scorer": "fusion",
+  "notes": [
+    "协议：阈值 τ_calib、Mahalanobis/Prototype 均值协方差、融合权重仅在 known/val 的 calib 子集上拟合，未知类不参与；",
+    "所有上报指标（AUROC/AUPR/FPR@95TPR/AURC/E-AURC/coverage@risk/代价曲线/已知类 mAP）只在 eval 子集上计算，calib 与 eval 无交集；",
+    "τ_cost 在 eval 已知 + 全部 unknown 上扫描，仅用于 RQ5 代价敏感性分析；",
+    "融合权重拟合仍使用 unknown 检测框，存在轻度乐观偏差，论文需注明。"
+  ],
+  "conclusion": "AUROC 最高的打分器为 `fusion`（AUROC=0.9734）；在 calib τ 下未知召回 67.23%、误诊率 0.00%、转人工率 88.90%、期望代价 2506.0000。结论解读需结合多组划分与多 seed，避免单组偶然性。"
+}

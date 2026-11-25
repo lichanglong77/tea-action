@@ -1,0 +1,62 @@
+{
+  "generated_at": "2026-11-25T21:48:11",
+  "data": "D:\\tea-action\\research_out\\open_set\\S5\\data_known.yaml",
+  "split": "val",
+  "split_dir": "D:\\tea-action\\research_out\\open_set\\S5\\known\\images\\val",
+  "n_images": 742,
+  "n_gt": 967,
+  "imgsz": 640,
+  "conf": 0.25,
+  "iou": 0.5,
+  "device": "",
+  "bootstrap": 1000,
+  "seed": 42,
+  "class_names": [
+    "Black rot",
+    "Brown blight",
+    "Leaf rust",
+    "Tea Mosquito bug",
+    "Healthy",
+    "White spot"
+  ],
+  "models": [
+    {
+      "model": "best.pt",
+      "weights": "research_out/runs/S5_s44/weights/best.pt",
+      "status": "ok",
+      "error": "",
+      "seconds": 21.2,
+      "n_pred": 1060,
+      "tp": 946,
+      "fp": 114,
+      "fn": 21,
+      "precision": 0.8925,
+      "recall": 0.9783,
+      "f1": 0.9334,
+      "ci": {
+        "n_boot": 1000,
+        "n_images": 742,
+        "precision": {
+          "mean": 0.8927,
+          "ci_low": 0.8736,
+          "ci_high": 0.9101
+        },
+        "recall": {
+          "mean": 0.9784,
+          "ci_low": 0.9675,
+          "ci_high": 0.9885
+        },
+        "f1": {
+          "mean": 0.9336,
+          "ci_low": 0.9215,
+          "ci_high": 0.9453
+        }
+      },
+      "per_image_errors": 105,
+      "correct_images": 637
+    }
+  ],
+  "comparison": null,
+  "multi_comparison": null,
+  "conclusion": "best.pt 在 val 上 F1=0.9334（95% CI 0.9215–0.9453）；置信区间宽度反映样本量，区间越窄结论越稳。"
+}

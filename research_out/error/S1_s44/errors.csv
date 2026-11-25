@@ -1,0 +1,118 @@
+﻿type,image,class_id,class_name,conf,iou,area_ratio,w,h,size_bin
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0194_JPG_jpg.rf.9adcfe8502f1e2a45611a6438b5993fb.jpg,2,Red Spider,0.8799,0.013,0.173264,219.2,323.8,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0194_JPG_jpg.rf.f34626f0d3dd7778f7fe3a80e47204b1.jpg,2,Red Spider,0.8799,0.013,0.173264,219.2,323.8,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0194_JPG_jpg.rf.f977296605f7976fbce4bad457ca088e.jpg,2,Red Spider,0.8799,0.013,0.173264,219.2,323.8,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0212_JPG_jpg.rf.3abcd2e48dd64da54f977eeb29bf09d1.jpg,2,Red Spider,0.2757,0.1038,0.046704,40.2,475.3,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0212_JPG_jpg.rf.4eee43eaf800a0e93fdbb43600a2650a.jpg,2,Red Spider,0.2757,0.1038,0.046704,40.2,475.3,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0212_JPG_jpg.rf.6a33e1f030b8ba2b8c7577e87e2b07c5.jpg,2,Red Spider,0.2757,0.1038,0.046704,40.2,475.3,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0295_JPG_jpg.rf.599bc77ec108bf7860d0e0a900f45b4e.jpg,3,Tea Mosquito bug,0.3324,0.4147,0.055641,244.9,93.1,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0295_JPG_jpg.rf.599bc77ec108bf7860d0e0a900f45b4e.jpg,3,Tea Mosquito bug,0.3324,0.4147,0.024723,129.0,78.5,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0295_JPG_jpg.rf.6eac8a3528fe062055b931f3a8abc7ea.jpg,3,Tea Mosquito bug,0.3324,0.4147,0.055641,244.9,93.1,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0295_JPG_jpg.rf.6eac8a3528fe062055b931f3a8abc7ea.jpg,3,Tea Mosquito bug,0.3324,0.4147,0.024723,129.0,78.5,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0295_JPG_jpg.rf.b4028933a0b6eea7973847b5dfb0b350.jpg,3,Tea Mosquito bug,0.3324,0.4147,0.055641,244.9,93.1,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0295_JPG_jpg.rf.b4028933a0b6eea7973847b5dfb0b350.jpg,3,Tea Mosquito bug,0.3324,0.4147,0.024723,129.0,78.5,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0296_JPG_jpg.rf.8a6a48cc7d310ee5141d94428d2ada47.jpg,3,Tea Mosquito bug,,0.0,0.024723,129.0,78.5,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0296_JPG_jpg.rf.c0e36bff3dafab07976fa7aaf1dee64b.jpg,3,Tea Mosquito bug,,0.0,0.024723,129.0,78.5,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0296_JPG_jpg.rf.c6b9338205141d83c52665e07e0eb759.jpg,3,Tea Mosquito bug,,0.0,0.024723,129.0,78.5,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0518_JPG_jpg.rf.6bb39c9bf94a544cb1a87551aa09024d.jpg,4,Healthy,0.4168,0.0,0.094456,288.2,134.3,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0518_JPG_jpg.rf.a4edfe4a2da806a409df00c601e423a8.jpg,4,Healthy,0.4168,0.0,0.094456,288.2,134.3,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0518_JPG_jpg.rf.eaa5f6b2bce3178647ed300b0825acee.jpg,4,Healthy,0.4168,0.0,0.094456,288.2,134.3,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0556_JPG_jpg.rf.58a5f4aeee571ee580b05fa946b0fa42.jpg,3,Tea Mosquito bug,0.2616,0.0,0.082423,151.6,222.7,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0556_JPG_jpg.rf.96e0f8ebc2bcfa31d8b11c54641059d0.jpg,3,Tea Mosquito bug,0.2616,0.0,0.082423,151.6,222.7,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0556_JPG_jpg.rf.9df1520c5cac5d7078013c805a082986.jpg,3,Tea Mosquito bug,0.2616,0.0,0.082423,151.6,222.7,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0597_JPG_jpg.rf.3a5baddec6c71815a80439c1568c2f6f.jpg,3,Tea Mosquito bug,0.5269,0.0,0.033197,60.1,226.2,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0597_JPG_jpg.rf.8a6f777e4f6eead963a7a05911a6b04b.jpg,3,Tea Mosquito bug,0.5269,0.0,0.033197,60.1,226.2,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0597_JPG_jpg.rf.e8daa4bad0b8345cf60bb67dbaa2601d.jpg,3,Tea Mosquito bug,0.5269,0.0,0.033197,60.1,226.2,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0660_JPG_jpg.rf.05391e8ae7d9a068d99c41f28585ee64.jpg,3,Tea Mosquito bug,0.3897,0.0,0.013644,128.9,43.3,medium
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0660_JPG_jpg.rf.390e29ce7babde46ad5fbb6806ac4eba.jpg,3,Tea Mosquito bug,0.3897,0.0,0.013644,128.9,43.3,medium
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0660_JPG_jpg.rf.d45e1f29d5eeced197512aa42a0ea6b8.jpg,3,Tea Mosquito bug,0.3897,0.0,0.013644,128.9,43.3,medium
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0767_JPG_jpg.rf.a93e24ea60f52db5fef72f329b48c856.jpg,2,Red Spider,0.5525,0.0,0.084496,87.1,397.2,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0767_JPG_jpg.rf.a93e24ea60f52db5fef72f329b48c856.jpg,3,Tea Mosquito bug,0.4544,0.0,0.037389,103.3,148.2,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0767_JPG_jpg.rf.a9976a649dacae7246b99c3555faa586.jpg,2,Red Spider,0.5525,0.0,0.084496,87.1,397.2,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0767_JPG_jpg.rf.a9976a649dacae7246b99c3555faa586.jpg,3,Tea Mosquito bug,0.4544,0.0,0.037389,103.3,148.2,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0767_JPG_jpg.rf.c686f4f4663351f15ca750104c2207c2.jpg,2,Red Spider,0.5525,0.0,0.084496,87.1,397.2,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0767_JPG_jpg.rf.c686f4f4663351f15ca750104c2207c2.jpg,3,Tea Mosquito bug,0.4544,0.0,0.037389,103.3,148.2,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0769_JPG_jpg.rf.5cef417f62484021374af1d127ef3581.jpg,2,Red Spider,0.8613,0.0,0.078647,83.3,386.9,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0769_JPG_jpg.rf.83e30385a6e8581c1bf34fd02af25f17.jpg,2,Red Spider,0.8613,0.0,0.078647,83.3,386.9,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0769_JPG_jpg.rf.bb987cf7146bb691a9966d8106e023bb.jpg,2,Red Spider,0.8613,0.0,0.078647,83.3,386.9,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0932_JPG_jpg.rf.c50d5140fc3638fcea240fa49d5ccefd.jpg,3,Tea Mosquito bug,,0.0,0.036486,121.5,123.0,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0932_JPG_jpg.rf.c50d5140fc3638fcea240fa49d5ccefd.jpg,3,Tea Mosquito bug,,0.0,0.02623,95.5,112.5,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0932_JPG_jpg.rf.e401d1b6d27b4a14910c920562b5afe4.jpg,3,Tea Mosquito bug,,0.0,0.036486,121.5,123.0,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0932_JPG_jpg.rf.e401d1b6d27b4a14910c920562b5afe4.jpg,3,Tea Mosquito bug,,0.0,0.02623,95.5,112.5,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0932_JPG_jpg.rf.ff407594b9da24d4ea2d6c9cb2e125ab.jpg,3,Tea Mosquito bug,,0.0,0.036486,121.5,123.0,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0932_JPG_jpg.rf.ff407594b9da24d4ea2d6c9cb2e125ab.jpg,3,Tea Mosquito bug,,0.0,0.02623,95.5,112.5,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0998_JPG_jpg.rf.d5338cf375d64c133b77497d3c1189bb.jpg,3,Tea Mosquito bug,0.4436,0.7367,0.194847,181.2,440.4,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0998_JPG_jpg.rf.e631ea4eec20aa301ef0e509bd139571.jpg,3,Tea Mosquito bug,0.4436,0.7367,0.194847,181.2,440.4,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_0998_JPG_jpg.rf.e848c8616528f3e2dab42b9fb365d38c.jpg,3,Tea Mosquito bug,0.4436,0.7367,0.194847,181.2,440.4,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1079_JPG_jpg.rf.a58c6da2a93963dd04b656bd1f6e4ccd.jpg,5,White spot,0.5505,0.0,0.046562,158.0,120.7,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1079_JPG_jpg.rf.c3c5623fcae306b3e16721d1808292d8.jpg,5,White spot,0.5505,0.0,0.046562,158.0,120.7,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1080_JPG_jpg.rf.2796afe45cdc2b965d583e35bc4f63a2.jpg,5,White spot,0.5091,0.0,0.04104,141.8,118.6,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1080_JPG_jpg.rf.81fa5b8767e357fcf1ef83a098b17763.jpg,5,White spot,0.5091,0.0,0.04104,141.8,118.6,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1080_JPG_jpg.rf.ecf6869208a6c4ec68875be55d32c923.jpg,5,White spot,0.5091,0.0,0.04104,141.8,118.6,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1083_JPG_jpg.rf.014e116bb047f103e3186a67afe3dbfc.jpg,5,White spot,0.3396,0.0524,0.104154,233.9,182.4,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1083_JPG_jpg.rf.c071fa8738d91d083a293618dcdf29dd.jpg,5,White spot,0.3396,0.0524,0.104154,233.9,182.4,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1083_JPG_jpg.rf.de2074238df175604ad8b948a89113c4.jpg,5,White spot,0.3396,0.0524,0.104154,233.9,182.4,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1086_JPG_jpg.rf.097b246fbde88dc7633e324d8c8b5ec5.jpg,5,White spot,0.6116,0.0493,0.122321,257.9,194.3,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1086_JPG_jpg.rf.097b246fbde88dc7633e324d8c8b5ec5.jpg,5,White spot,0.5665,0.0015,0.089276,104.5,349.8,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1086_JPG_jpg.rf.442df3fcc34887141845c4929265b950.jpg,5,White spot,0.6116,0.0493,0.122321,257.9,194.3,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1086_JPG_jpg.rf.442df3fcc34887141845c4929265b950.jpg,5,White spot,0.5665,0.0015,0.089276,104.5,349.8,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1086_JPG_jpg.rf.c2620cedad3cfdce5d5befb6f2cc5b0e.jpg,5,White spot,0.6116,0.0493,0.122321,257.9,194.3,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1086_JPG_jpg.rf.c2620cedad3cfdce5d5befb6f2cc5b0e.jpg,5,White spot,0.5665,0.0015,0.089276,104.5,349.8,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1210_JPG_jpg.rf.27efd4efff071f34d1411735b1c5f68e.jpg,3,Tea Mosquito bug,0.5742,0.0,0.05897,199.7,121.0,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1210_JPG_jpg.rf.27efd4efff071f34d1411735b1c5f68e.jpg,3,Tea Mosquito bug,0.3225,0.0,0.043963,458.7,39.3,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1210_JPG_jpg.rf.3324b9825c906891bd86eae393749400.jpg,3,Tea Mosquito bug,0.5742,0.0,0.05897,199.7,121.0,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1210_JPG_jpg.rf.3324b9825c906891bd86eae393749400.jpg,3,Tea Mosquito bug,0.3225,0.0,0.043963,458.7,39.3,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1210_JPG_jpg.rf.89240870282ef45bb49366a07d6e1ec5.jpg,3,Tea Mosquito bug,0.5742,0.0,0.05897,199.7,121.0,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1210_JPG_jpg.rf.89240870282ef45bb49366a07d6e1ec5.jpg,3,Tea Mosquito bug,0.3225,0.0,0.043963,458.7,39.3,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1453_JPG_jpg.rf.2ccd1a8341354f7c6a6b3c9b44e2b2ec.jpg,3,Tea Mosquito bug,0.8834,0.0134,0.040368,80.1,206.4,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1453_JPG_jpg.rf.d1f30c5022b428b05578c1c7fb44de89.jpg,3,Tea Mosquito bug,0.8834,0.0134,0.040368,80.1,206.4,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1453_JPG_jpg.rf.ee0fd11b8384c6b60a73fd867471ad8e.jpg,3,Tea Mosquito bug,0.8834,0.0134,0.040368,80.1,206.4,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1545_JPG_jpg.rf.a53e338506ecb36d7496c6b8a4d23bb2.jpg,3,Tea Mosquito bug,0.3965,0.0,0.011834,91.5,53.0,medium
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1545_JPG_jpg.rf.e39e8832275cac315b95ea2d4301ecad.jpg,3,Tea Mosquito bug,0.3965,0.0,0.011834,91.5,53.0,medium
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1545_JPG_jpg.rf.e41e5baa05865ef580949162030c665c.jpg,3,Tea Mosquito bug,0.3965,0.0,0.011834,91.5,53.0,medium
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1551_JPG_jpg.rf.92676bf0e6671570d820270fcbc43a44.jpg,3,Tea Mosquito bug,0.4426,0.0,0.027008,152.3,72.6,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1551_JPG_jpg.rf.e07ab59e027d9e63b8a67d3ba609424b.jpg,3,Tea Mosquito bug,0.4426,0.0,0.027008,152.3,72.6,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1551_JPG_jpg.rf.e33b260c7dfa4a7a149b6d417f3c3e0e.jpg,3,Tea Mosquito bug,0.4426,0.0,0.027008,152.3,72.6,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1761_JPG_jpg.rf.1e10cf198a8ec8c01f43beadc9bd05d2.jpg,0,Black rot,0.5491,0.872,0.231524,374.8,253.1,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1761_JPG_jpg.rf.1e10cf198a8ec8c01f43beadc9bd05d2.jpg,5,White spot,0.5491,0.872,0.208704,347.5,246.0,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1761_JPG_jpg.rf.5dd3101e61ae2fa49727959ae581a95e.jpg,0,Black rot,0.5491,0.872,0.231524,374.8,253.1,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1761_JPG_jpg.rf.5dd3101e61ae2fa49727959ae581a95e.jpg,5,White spot,0.5491,0.872,0.208704,347.5,246.0,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1761_JPG_jpg.rf.976a04254703dd625c89d5eb0d409a40.jpg,0,Black rot,0.5491,0.872,0.231524,374.8,253.1,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_1761_JPG_jpg.rf.976a04254703dd625c89d5eb0d409a40.jpg,5,White spot,0.5491,0.872,0.208704,347.5,246.0,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2118_JPG_jpg.rf.46e06978ea85f3ace8586cafb6d961f1.jpg,3,Tea Mosquito bug,0.5328,0.0,0.016356,141.1,47.5,medium
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2118_JPG_jpg.rf.5901af6c19b2333b239fba83fe041934.jpg,3,Tea Mosquito bug,0.5328,0.0,0.016356,141.1,47.5,medium
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2118_JPG_jpg.rf.f443793689de1163953bb478b3bd8b18.jpg,3,Tea Mosquito bug,0.5328,0.0,0.016356,141.1,47.5,medium
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2122_JPG_jpg.rf.037c2a60bdca9b7182587d90d3daa6ad.jpg,3,Tea Mosquito bug,0.7945,0.0,0.032017,103.8,126.4,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2122_JPG_jpg.rf.037c2a60bdca9b7182587d90d3daa6ad.jpg,3,Tea Mosquito bug,0.3002,0.0,0.014901,25.3,241.4,medium
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2122_JPG_jpg.rf.34df536af137d1dedfce4744c06eb985.jpg,3,Tea Mosquito bug,0.7945,0.0,0.032017,103.8,126.4,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2122_JPG_jpg.rf.34df536af137d1dedfce4744c06eb985.jpg,3,Tea Mosquito bug,0.3002,0.0,0.014901,25.3,241.4,medium
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2122_JPG_jpg.rf.5bf7b39edfa336661b820f0a31c99fc2.jpg,3,Tea Mosquito bug,0.7945,0.0,0.032017,103.8,126.4,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2122_JPG_jpg.rf.5bf7b39edfa336661b820f0a31c99fc2.jpg,3,Tea Mosquito bug,0.3002,0.0,0.014901,25.3,241.4,medium
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2243_JPG_jpg.rf.18298f4c133969543fd4135f820e0986.jpg,3,Tea Mosquito bug,0.8574,0.104,0.030527,119.6,104.5,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2381_JPG_jpg.rf.a9f7441335541196b99f2e06746dbd36.jpg,3,Tea Mosquito bug,0.5292,0.0278,0.050661,140.2,148.0,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2381_JPG_jpg.rf.d61f0b379b1b6d819121d45234857bc9.jpg,3,Tea Mosquito bug,0.5292,0.0278,0.050661,140.2,148.0,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2381_JPG_jpg.rf.f0b779ba462fe07ccea7169856baab5a.jpg,3,Tea Mosquito bug,0.5292,0.0278,0.050661,140.2,148.0,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2382_JPG_jpg.rf.68e472a3dc92efc9703bdb973d117561.jpg,3,Tea Mosquito bug,0.6397,0.0,0.035872,121.5,120.9,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2382_JPG_jpg.rf.abec5278c62f87858d75cf1661b3cb66.jpg,3,Tea Mosquito bug,0.6397,0.0,0.035872,121.5,120.9,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2382_JPG_jpg.rf.f3ae56b59b8c10fc3d0d8a343c1148b5.jpg,3,Tea Mosquito bug,0.6397,0.0,0.035872,121.5,120.9,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2549_JPG_jpg.rf.57efe35313a902ca45320fede9740d67.jpg,3,Tea Mosquito bug,0.3739,0.0,0.03649,35.3,423.4,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2549_JPG_jpg.rf.62d18930b9e144ae68bbe8307a7b99cd.jpg,3,Tea Mosquito bug,0.3739,0.0,0.03649,35.3,423.4,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2549_JPG_jpg.rf.badb37fd0b3cc2c9ebf82d4c2385d1e2.jpg,3,Tea Mosquito bug,0.3739,0.0,0.03649,35.3,423.4,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2615_JPG_jpg.rf.6e20c6c1bf15049621220e6122fe8199.jpg,3,Tea Mosquito bug,0.7683,0.0011,0.045817,135.5,138.5,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2615_JPG_jpg.rf.7648fb627c5fb70c8895069547eca17a.jpg,3,Tea Mosquito bug,0.7683,0.0011,0.045817,135.5,138.5,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2615_JPG_jpg.rf.aeb3c8d93ac9fa216eb5e6af1801633c.jpg,3,Tea Mosquito bug,0.7683,0.0011,0.045817,135.5,138.5,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2732_JPG_jpg.rf.033b1a0977f4f5c8a0b7f8d2a9aa2dc3.jpg,3,Tea Mosquito bug,0.7825,0.3819,0.109961,269.2,167.3,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2732_JPG_jpg.rf.033b1a0977f4f5c8a0b7f8d2a9aa2dc3.jpg,3,Tea Mosquito bug,0.3699,0.0084,0.035107,230.8,62.3,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2732_JPG_jpg.rf.033b1a0977f4f5c8a0b7f8d2a9aa2dc3.jpg,3,Tea Mosquito bug,0.7825,0.3819,0.050972,146.0,143.0,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2732_JPG_jpg.rf.9b72423bdc38d779861d78374f4806a0.jpg,3,Tea Mosquito bug,0.7825,0.3819,0.109961,269.2,167.3,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2732_JPG_jpg.rf.9b72423bdc38d779861d78374f4806a0.jpg,3,Tea Mosquito bug,0.3699,0.0084,0.035107,230.8,62.3,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2732_JPG_jpg.rf.9b72423bdc38d779861d78374f4806a0.jpg,3,Tea Mosquito bug,0.7825,0.3819,0.050972,146.0,143.0,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2732_JPG_jpg.rf.fd7d6256eef1ba4c5bfc3e240f1f07d0.jpg,3,Tea Mosquito bug,0.7825,0.3819,0.109961,269.2,167.3,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2732_JPG_jpg.rf.fd7d6256eef1ba4c5bfc3e240f1f07d0.jpg,3,Tea Mosquito bug,0.3699,0.0084,0.035107,230.8,62.3,large
+FN,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2732_JPG_jpg.rf.fd7d6256eef1ba4c5bfc3e240f1f07d0.jpg,3,Tea Mosquito bug,0.7825,0.3819,0.050972,146.0,143.0,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2840_JPG_jpg.rf.8d7fb0fc4fda2109ddbc6a955d0e36ef.jpg,3,Tea Mosquito bug,0.277,0.0,0.022771,140.3,66.5,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2840_JPG_jpg.rf.929d018a156cd135dc85dc2b2242fa42.jpg,3,Tea Mosquito bug,0.277,0.0,0.022771,140.3,66.5,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2840_JPG_jpg.rf.9b7f0186465b186b6dee53c5c492e644.jpg,3,Tea Mosquito bug,0.277,0.0,0.022771,140.3,66.5,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2967_JPG_jpg.rf.0e1669913720ff5767e780c45556b55b.jpg,3,Tea Mosquito bug,0.3862,0.0,0.043177,87.4,202.4,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2967_JPG_jpg.rf.3bdb66bac6d58c7e52663514a2d2591a.jpg,3,Tea Mosquito bug,0.3862,0.0,0.043177,87.4,202.4,large
+FP,D:\tea-action\research_out\open_set\S1\known\images\val\IMG_2967_JPG_jpg.rf.d94ae10ce084b6d18d43484c734f71da.jpg,3,Tea Mosquito bug,0.3862,0.0,0.043177,87.4,202.4,large
