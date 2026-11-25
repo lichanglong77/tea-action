@@ -1,0 +1,20 @@
+# 运行时依赖（锁版本，保证任何机器装出同一套环境）
+# 视觉/训练相关（torch、ultralytics、opencv）体积大，单独放在 requirements-vision.txt
+streamlit==1.66.1
+requests==2.34.2
+pandas==3.0.5
+numpy==2.3.5
+python-dotenv==1.2.4
+pymysql==1.2.3
+# WebSocket / HTTP 执行服务（python -m src.ws_server）
+uvicorn==0.54.0
+websockets==17.4
+# 三引擎联动（风险预警）
+scikit-learn==1.9.1
+joblib==1.6.0
+# 测试
+pytest==9.2.0
+# 以下三个未在开发机安装验证，安装后用 `pip freeze` 回填精确版本再提交
+plotly>=5.20.0
+lightgbm>=4.0.0
+statsforecast>=1.7.0

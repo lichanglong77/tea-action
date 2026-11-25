@@ -1,0 +1,7 @@
+# 由 training/research/make_open_set_split.py 自动生成，请勿手工修改
+
+path: D:/tea-action/research_out/open_set/S1/unknown
+val: images/val
+
+names:
+  0: unknown

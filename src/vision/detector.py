@@ -1,0 +1,299 @@
+"""茶叶病害检测器：Ultralytics YOLO 推理 + 模拟检测降级。
+
+真实模式（backend=ultralytics）：
+  - 加载 data/models/tea_yolo.pt（由 training/train_yolo.py 训练产出）
+  - 对输入帧跑 model.predict，把结果统一为 {class, conf, bbox}
+
+模拟模式（backend=sim）：
+  - ultralytics 未安装 / 模型缺失 / 训练未完成时自动降级
+  - 在 capture.make_demo_frame 的演示帧上按叶片坐标生成确定性检测框，
+    保证「采集→推理→决策→推送→网页展示」全链路无模型也可演示
+
+类别顺序与 figshare Tea-Leaf Disease and Pest Detection Dataset v1.0 一致
+（训练时以数据集 data.yaml 的实际顺序为准，模型自带 names 优先）。
+"""
+from __future__ import annotations
+
+import os
+
+# Windows 下 numpy/torch/opencv 的 OpenMP 运行时冲突防护（OMP: Error #15），
+# 必须在 import torch/ultralytics 之前设置
+os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
+
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+
+from .capture import DEMO_LEAVES, make_demo_frame
+
+# 与 figshare v1.0 数据集一致的类别（训练脚本会按 data.yaml 校准）
+CLASS_NAMES = [
+    "Black rot", "Brown blight", "Leaf rust", "Red Spider",
+    "Tea Mosquito bug", "Healthy", "White spot", "disease",
+]
+
+# 权重内实际类别名（figshare 原始命名）→ 系统内部统一短名。
+# 训练产出的 tea_yolo.pt 的 names 是 "Black rot of tea" / "Tea leaf" 等长名，
+# 若不归一化，健康叶 "Tea leaf" 会被下游当成病害，导致误判与误喷药。
+_NAME_ALIASES = {
+    "Black rot of tea": "Black rot",
+    "Brown blight of tea": "Brown blight",
+    "Leaf rust of tea": "Leaf rust",
+    "Red Spider infested tea leaf": "Red Spider",
+    "Tea Mosquito bug infested leaf": "Tea Mosquito bug",
+    "Tea leaf": "Healthy",
+    "White spot of tea": "White spot",
+}
+
+
+def canonical_class(name: str) -> str:
+    """把模型输出的类别名归一化为系统内部短名（未知类别原样返回）。"""
+    return _NAME_ALIASES.get(name, name)
+
+
+def _iou(a: list[float], b: list[float]) -> float:
+    """两个 [x1, y1, x2, y2] 框的 IoU。"""
+    ix1, iy1 = max(a[0], b[0]), max(a[1], b[1])
+    ix2, iy2 = min(a[2], b[2]), min(a[3], b[3])
+    iw, ih = max(0.0, ix2 - ix1), max(0.0, iy2 - iy1)
+    inter = iw * ih
+    area_a = max(0.0, a[2] - a[0]) * max(0.0, a[3] - a[1])
+    area_b = max(0.0, b[2] - b[0]) * max(0.0, b[3] - b[1])
+    union = area_a + area_b - inter
+    return inter / union if union > 0 else 0.0
+
+
+def _nms(detections: list[dict], iou_thr: float = 0.5) -> list[dict]:
+    """按类别做非极大值抑制（切片推理后合并相邻块的重复框）。"""
+    kept: list[dict] = []
+    for cls in {d["class"] for d in detections}:
+        group = sorted((d for d in detections if d["class"] == cls), key=lambda d: -d["conf"])
+        while group:
+            best = group.pop(0)
+            kept.append(best)
+            group = [g for g in group if _iou(best["bbox"], g["bbox"]) <= iou_thr]
+    return sorted(kept, key=lambda d: -d["conf"])
+
+
+def _axis_starts(total: int, size: int, stride: int) -> list[int]:
+    """某个方向上的切片起点，保证最后一块贴住边缘。"""
+    if total <= size:
+        return [0]
+    starts = list(range(0, total - size + 1, stride))
+    if starts[-1] != total - size:
+        starts.append(total - size)
+    return starts
+
+
+# 推理输入分辨率：默认 320 以降低轻薄本 CPU 负载（首次调用含 torch 预热约数秒，
+# 稳态推理约 50ms/帧，几乎不影响帧率）；可通过环境变量 DETECT_IMGSZ 调整（如 480/640）。
+DETECT_IMGSZ = int(os.getenv("DETECT_IMGSZ", "320"))
+
+# 模拟模式下各叶片的检出类别（与合成帧病斑对应）
+_SIM_LEAF_CLASS = {
+    "brown": "Brown blight",
+    "rust": "Leaf rust",
+    "spider": "Red Spider",
+    "none": "Healthy",
+}
+
+# 模拟置信度区间
+_SIM_CONF = {"Brown blight": (0.82, 0.93), "Leaf rust": (0.71, 0.86),
+             "Red Spider": (0.66, 0.82), "Healthy": (0.88, 0.95)}
+
+
+def _box_from_leaf(leaf: dict, rng) -> list[float]:
+    """按叶片中心/尺寸生成检测框 [x1, y1, x2, y2]。"""
+    dx, dy = int(rng.integers(-6, 7)), int(rng.integers(-5, 6))
+    x1 = int(leaf["cx"] - leaf["rx"] + dx)
+    y1 = int(leaf["cy"] - leaf["ry"] + dy)
+    x2 = int(leaf["cx"] + leaf["rx"] + dx)
+    y2 = int(leaf["cy"] + leaf["ry"] + dy)
+    return [max(0, x1), max(0, y1), x2, y2]
+
+
+class SimDetector:
+    """模拟检测器：在演示帧上生成确定性、动态的检测结果。"""
+
+    def __init__(self, seed: int | None = None):
+        self.seed = seed
+        self._count = 0
+
+    def detect(self, frame: np.ndarray | None = None) -> dict:
+        self._count += 1
+        rng = np.random.default_rng((self.seed or 0) + self._count // 3)
+        # 每 2 次轮换一次检出组合（让网页展示有动态变化，并模拟「打药→防效→复发」闭环）：
+        #   0: 全部 4 片叶（含 3 种病害）
+        #   1: 3 片叶（2 种病害 + 1 健康）
+        #   2/3: 仅健康叶（模拟药剂起效 / 视野内无病害，持续 4 轮）→ 触发 Agent 停止打药
+        cycle = (self._count // 2) % 4
+        if cycle == 0:
+            selected = DEMO_LEAVES
+        elif cycle == 1:
+            selected = DEMO_LEAVES[0:1] + DEMO_LEAVES[2:4]
+        else:
+            selected = [DEMO_LEAVES[2]]  # 仅 Healthy
+
+        detections = []
+        for leaf in selected:
+            cls = _SIM_LEAF_CLASS.get(leaf["lesion"], "disease")
+            lo, hi = _SIM_CONF.get(cls, (0.7, 0.9))
+            conf = round(float(rng.uniform(lo, hi)), 2)
+            detections.append({
+                "class": cls,
+                "conf": conf,
+                "bbox": _box_from_leaf(leaf, rng),
+            })
+        return build_detection_result(detections, source="demo_frame", backend="sim",
+                                      model="sim-detector", frame=frame)
+
+
+def build_detection_result(detections: list[dict], source: str, backend: str,
+                           model: str, frame: np.ndarray | None = None) -> dict:
+    """把检测列表统一封装为结构化结果。"""
+    diseases = [d["class"] for d in detections if d["class"] != "Healthy"]
+    confs = [d["conf"] for d in detections] or [0.0]
+    return {
+        "ts": datetime.now().isoformat(timespec="seconds"),
+        "source": source,
+        "backend": backend,
+        "model": model,
+        "detections": detections,
+        "summary": {
+            "total": len(detections),
+            "diseases": sorted(set(diseases)),
+            "max_conf": round(max(confs), 2),
+            "healthy": not diseases,
+        },
+        "frame_shape": list(frame.shape[:2]) if frame is not None else None,
+    }
+
+
+class TeaDiseaseDetector:
+    """茶叶病害 YOLO 检测器（自动降级）。"""
+
+    def __init__(self, model_path: str | None = None):
+        from .. import config
+        self.model_path = model_path or str(config.DATA_DIR / "models" / "tea_yolo.pt")
+        self.model = None
+        self.backend = "sim"
+        self._sim = SimDetector()   # 复用一个实例，让演示帧轮换逻辑连续计数
+        self._try_load()
+
+    def _try_load(self) -> None:
+        try:
+            from ultralytics import YOLO
+            import os
+            if os.path.exists(self.model_path):
+                self.model = YOLO(self.model_path)
+                self.backend = "ultralytics"
+                return
+        except Exception:  # noqa: BLE001 - 依赖或模型缺失时降级为模拟
+            pass
+        self.model = None
+        self.backend = "sim"
+
+    @property
+    def ready(self) -> bool:
+        return self.model is not None
+
+    def reload(self) -> bool:
+        """模型训练完成后热加载。"""
+        self._try_load()
+        return self.ready
+
+    def detect(self, frame: np.ndarray | None = None, source_hint: str | None = None,
+               imgsz: int | None = None, conf: float = 0.25) -> dict:
+        """对一帧图像做病害检测，返回统一结构。
+
+        source_hint：帧的实际来源（"usb_cam" / "demo_frame" / "upload"），由调用方
+        根据画面实际来源传入，用于在页面上区分「摄像头实拍」与「上传照片」。
+        imgsz/conf：单张上传照片等静态高精度场景可传更大分辨率/更低阈值；
+        不传时沿用环境变量 DETECT_IMGSZ 与默认 0.25（摄像头实时链路保持不变）。
+        模型不可用时降级为模拟检测。
+        """
+        if frame is None:
+            frame = make_demo_frame()
+        if self.model is not None:
+            try:
+                return self._detect_real(frame, source_hint, imgsz, conf)
+            except Exception:  # noqa: BLE001 - 推理异常降级
+                pass
+        return self._sim.detect(frame)
+
+    def _detect_real(self, frame: np.ndarray, source_hint: str | None = None,
+                     imgsz: int | None = None, conf: float = 0.25) -> dict:
+        results = self.model.predict(frame, conf=conf, iou=0.5, verbose=False,
+                                     imgsz=imgsz or DETECT_IMGSZ)
+        detections = []
+        names = self.model.names if hasattr(self.model, "names") else CLASS_NAMES
+        r = results[0]
+        if r.boxes is not None and len(r.boxes):
+            for box in r.boxes:
+                cls_id = int(box.cls[0].item())
+                conf = round(float(box.conf[0].item()), 2)
+                x1, y1, x2, y2 = [round(float(v), 1) for v in box.xyxy[0].tolist()]
+                detections.append({
+                    "class": canonical_class(names.get(cls_id, f"class_{cls_id}")),
+                    "conf": conf,
+                    "bbox": [x1, y1, x2, y2],
+                })
+        source = source_hint or "usb_cam"
+        return build_detection_result(detections, source=source, backend="ultralytics",
+                                      model=self.model_path, frame=frame)
+
+    def detect_upload(self, frame: np.ndarray, imgsz: int = 640, conf: float = 0.25,
+                      tta: bool = False, tiled: bool = False) -> dict:
+        """上传照片专用推理：支持 TTA 与切片检测，直接返回原图坐标下的结果。
+
+        tta：推理时同时做翻转/缩放并融合，通常 +1~2 点 mAP，耗时约 3 倍。
+        tiled：把大图切成带重叠的小块分别检测再合并，显著提升小病斑召回，
+               耗时随切片数线性增长；图片本身小于切片尺寸时自动退化为单次推理。
+        """
+        if self.model is None:
+            raise RuntimeError("模型未加载")
+
+        h, w = frame.shape[:2]
+        size = max(320, int(imgsz))
+        stride = max(1, int(size * 0.8))  # 20% 重叠
+
+        if tiled and (h > size or w > size):
+            tiles, offsets = [], []
+            for y0 in _axis_starts(h, size, stride):
+                for x0 in _axis_starts(w, size, stride):
+                    tiles.append(np.ascontiguousarray(frame[y0:y0 + size, x0:x0 + size]))
+                    offsets.append((x0, y0))
+        else:
+            tiles, offsets = [frame], [(0, 0)]
+
+        results = self.model.predict(tiles, conf=conf, iou=0.5, imgsz=imgsz,
+                                     augment=tta, verbose=False)
+        names = self.model.names if hasattr(self.model, "names") else CLASS_NAMES
+        detections = []
+        for r, (x0, y0) in zip(results, offsets):
+            if r.boxes is None or not len(r.boxes):
+                continue
+            for box in r.boxes:
+                cls_id = int(box.cls[0].item())
+                x1, y1, x2, y2 = box.xyxy[0].tolist()
+                detections.append({
+                    "class": canonical_class(names.get(cls_id, f"class_{cls_id}")),
+                    "conf": round(float(box.conf[0].item()), 2),
+                    # 切片坐标 → 原图坐标，并裁到图像范围内
+                    "bbox": [round(max(0.0, min(w, x1 + x0)), 1),
+                             round(max(0.0, min(h, y1 + y0)), 1),
+                             round(max(0.0, min(w, x2 + x0)), 1),
+                             round(max(0.0, min(h, y2 + y0)), 1)],
+                })
+
+        if len(tiles) > 1:
+            detections = _nms(detections, iou_thr=0.5)
+
+        return build_detection_result(detections, source="upload", backend="ultralytics",
+                                      model=Path(self.model_path).name, frame=frame)
+
+
+
+# 模块级单例
+detector = TeaDiseaseDetector()

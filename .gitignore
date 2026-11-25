@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# 环境变量与密钥（禁止提交真实密钥，只提交 env.example 模板）
+.env
+.env.local
+.streamlit/secrets.toml
+
+# 测试与缓存
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE / 系统
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# 旧的忽略清单草稿（已并入本文件）
+gitignore.txt
+
+# 运行日志
+*.log
+st_log.txt
+st_err.txt
+ws_server.log
+ws_server.err.log
+
+# 每日预警运行时产物（由 daily_recorder 自动生成，不入库）
+data/alerts/
+
+# 数据集（786MB 且超出 GitHub 单文件 100MB 上限，用 download_data.py 重新下载）
+training/datasets/
+
+# 训练产物（曲线、混淆矩阵、验证图、best/last 权重）：体积大，统一归档到 GitHub Release
+training/runs/
+
+# Ultralytics 训练缓存
+labels.cache
+
+# 测试输出留痕（测试脚本本身照常提交）
+bat_run.txt
+*_out.txt
