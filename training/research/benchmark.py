@@ -86,9 +86,13 @@ def run_one(weights: str, data: Path, imgsz: int, device: str | None,
             augment: bool, latency_image: str | None, out_dir: Path) -> dict:
     """跑通一个模型并返回一行结果；任何异常都收敛成 status=error。"""
     row: dict = {k: "" for k in FIELDNAMES}
+    name = Path(weights).name
+    if name in {"best.pt", "last.pt"}:
+        run_dir = Path(weights).parent.parent
+        name = f"{run_dir.name}_{name}"
     row.update({
         "status": "ok",
-        "model": Path(weights).name,
+        "model": name,
         "imgsz": imgsz,
         "augment": augment,
         "timestamp": datetime.now().isoformat(timespec="seconds"),
@@ -113,6 +117,14 @@ def run_one(weights: str, data: Path, imgsz: int, device: str | None,
                     row["gflops"] = round(gf, 2)
         except Exception:  # noqa: BLE001
             pass
+
+        # 新版 ultralytics 的 info(verbose=False) 返回 None（只打印），补一条显式计算
+        if not row["gflops"]:
+            try:
+                from ultralytics.utils.torch_utils import get_flops
+                row["gflops"] = round(float(get_flops(model.model, imgsz)), 2)
+            except Exception:  # noqa: BLE001
+                pass
 
         metrics = model.val(
             data=str(data),
