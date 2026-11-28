@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import gc
 import json
 import math
 import sys
@@ -83,29 +84,45 @@ def run_model(weights: str, images: list[Path], labels: list[Path],
 
         model = YOLO(weights)
         model_names = getattr(model, "names", None) or {}
-        stream = model.predict(
-            source=[str(p) for p in images],
-            conf=args.conf,
-            iou=args.iou,
-            imgsz=args.imgsz,
-            device=args.device or None,
-            verbose=False,
-            stream=True,
-        )
-        for i, (img_path, label_path, res) in enumerate(zip(images, labels, stream)):
-            height, width = res.orig_shape[:2]
-            gts = read_gt(label_path, width, height, len(names))
-            preds = get_preds(res)
-            matched = match_image(preds, gts, args.iou)
-            result["tp"][i] = len(matched["tp"])
-            result["fp"][i] = len(matched["fp"])
-            result["fn"][i] = len(matched["fn"])
-            result["gt"][i] = len(gts)
-            result["pred"][i] = len(preds)
-            result["n_gt"] += len(gts)
-            result["n_pred"] += len(preds)
-            if (i + 1) % 200 == 0:
-                print(f"  已推理 {i + 1}/{len(images)} 张……")
+        # 分块推理：Ultralytics 8.4 单次大列表预测会把整批图并成一个大张量，
+        # 8GB 显存跑到数百张即 OOM；分块 + 清缓存后峰值稳定在 ~2GB。
+        total = len(images)
+        chunk = 64
+        for start in range(0, total, chunk):
+            subset = images[start:start + chunk]
+            stream = model.predict(
+                source=[str(p) for p in subset],
+                conf=args.conf,
+                iou=args.iou,
+                imgsz=args.imgsz,
+                device=args.device or None,
+                verbose=False,
+                batch=1,
+                stream=True,
+            )
+            for j, res in enumerate(stream):
+                i = start + j
+                img_path, label_path = images[i], labels[i]
+                height, width = res.orig_shape[:2]
+                gts = read_gt(label_path, width, height, len(names))
+                preds = get_preds(res)
+                matched = match_image(preds, gts, args.iou)
+                result["tp"][i] = len(matched["tp"])
+                result["fp"][i] = len(matched["fp"])
+                result["fn"][i] = len(matched["fn"])
+                result["gt"][i] = len(gts)
+                result["pred"][i] = len(preds)
+                result["n_gt"] += len(gts)
+                result["n_pred"] += len(preds)
+                if (i + 1) % 200 == 0:
+                    print(f"  已推理 {i + 1}/{total} 张……")
+            gc.collect()
+            try:
+                import torch
+                if torch.cuda.is_available():
+                    torch.cuda.empty_cache()
+            except Exception:  # noqa: BLE001
+                pass
         if not names and model_names:  # data.yaml 缺 names 时用模型自带类别名
             names.extend(class_name([], k, model_names) for k in sorted(model_names))
     except Exception as e:  # noqa: BLE001 - 单模型失败不应中断整批

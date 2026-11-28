@@ -47,3 +47,20 @@ labels.cache
 # 测试输出留痕（测试脚本本身照常提交）
 bat_run.txt
 *_out.txt
+
+# 第三轮：本地临时/体积产物
+_upstream/
+runs/
+yolov8n.pt
+*.zip
+data/models/tea_yolo.pt
+research_out/error/
+research_out/val_ablation/
+research_out/open_set_v1/
+research_out/release_upload.ps1
+research_out/resume_p2.ps1
+research_out/run_all_ablation.ps1
+research_out/run_all_ablation_v2.ps1
+research_out/run_all_eval.ps1
+research_out/run_all_stats.ps1
+research_out/run_baselines.ps1

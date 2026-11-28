@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import gc
 import sys
 import time
 from datetime import datetime
@@ -102,20 +103,39 @@ def collect(model_path: str, images: list[Path], labels: list[Path],
     from ultralytics import YOLO
 
     model = YOLO(model_path)
-    stream = model.predict(
-        source=[str(p) for p in images],
-        conf=args.conf,
-        iou=args.iou,
-        imgsz=args.imgsz,
-        device=args.device or None,
-        verbose=False,
-        stream=True,
-    )
+
+    def _chunked_stream():
+        """分块推理：8.4 版单次大列表预测会把整批图并成大张量，8GB 显存跑数百张即 OOM。"""
+        total = len(images)
+        chunk = 64
+        for start in range(0, total, chunk):
+            subset = images[start:start + chunk]
+            stream = model.predict(
+                source=[str(p) for p in subset],
+                conf=args.conf,
+                iou=args.iou,
+                imgsz=args.imgsz,
+                device=args.device or None,
+                verbose=False,
+                batch=1,
+                stream=True,
+            )
+            for j, res in enumerate(stream):
+                i = start + j
+                yield i, (images[i], labels[i], res)
+            gc.collect()
+            try:
+                import torch
+                if torch.cuda.is_available():
+                    torch.cuda.empty_cache()
+            except Exception:  # noqa: BLE001
+                pass
+
     records: list[dict] = []
     total_gt = 0
     total_pred = 0
 
-    for i, (img_path, label_path, res) in enumerate(zip(images, labels, stream)):
+    for i, (img_path, label_path, res) in _chunked_stream():
         height, width = res.orig_shape[:2]
         area_img = float(width * height) or 1.0
         gts = read_gt(label_path, width, height, len(names))

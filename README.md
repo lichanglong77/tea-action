@@ -391,12 +391,17 @@ REST API：`GET /api/status`、`GET /api/frame`（最近一帧画面）、`GET /
 - 训练：`python training/download_data.py`（需网络，约 367MB）→ `python training/train_yolo.py --quick`（快速档，产出 `data/models/tea_yolo.pt`）
 - **未训练/未装依赖时自动降级**为模拟检测器（`backend=sim`），演示链路完整可用；模型就绪后 `backend=ultralytics` 无缝切换
 
-> ✅ **本机已训练完成**（2026-10）：`data/models/tea_yolo.pt`（快速档，23 轮，验证集 mAP50=0.818）。
+> ✅ **本机已训练完成**（2026-11，100 轮 / 640 / seed 42）：`data/models/tea_yolo.pt` 由自训 `A_s42` 覆盖，
+> 验证集 mAP@0.5 = **0.971**、mAP@0.5:0.95 = **0.735**（8 类，val 784 图 / 1042 实例，其中有效标注 6 类）。
+> 阈值配置 `data/models/conf_threshold.json`：`conf = 0.35`，对应 F1 = 0.9701（0.10~0.50 区间 F1 几乎持平，对阈值不敏感）。
 > 推理环境需含 torch + ultralytics + opencv（conda 或 venv 皆可，见下「运行环境说明」）；缺少时自动降级为模拟检测。
 >
-> 📦 **训练产物已归档**：`training/runs/`（含 best/last 权重、PR 曲线、混淆矩阵、验证图，约 17MB）不再入库，
-> 见 [Releases](https://github.com/chunyihan1/tea-action/releases) 中的 `tea_yolo_training_runs.zip`；
-> 仓库只保留部署用的 `data/models/tea_yolo.pt`。重训后本地 `training/runs/` 已被 `.gitignore` 忽略。
+> ⚠️ **仓库不含可用权重**：上游自带的 `data/models/tea_yolo.pt`（a72ec89）实测 mAP@0.5 仅 0.231，不可用。
+> 请从 [Releases](https://github.com/lichanglong77/tea-action/releases) 下载 `v2.0-product-weight` 中的 `tea_yolo.pt`（约 21.5MB），
+> 放到 `data/models/tea_yolo.pt` 后即可启用真实推理（SHA256 见同 Release 的 `tea_yolo_sha256.txt`）。
+>
+> 📦 **训练产物归档**：`research_out/runs/` 与 `training/runs/` 不入库，权重见各 Release；仓库只保留部署用的 `data/models/tea_yolo.pt` 占位。
+
 
 ### 运行环境说明
 

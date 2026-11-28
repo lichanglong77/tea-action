@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-25T21:42:23",
-  "model": "research_out/runs/S5_s42/weights/best.pt",
+  "generated_at": "2026-11-28T10:19:11",
+  "model": "research_out\\runs\\S5_s42\\weights\\best.pt",
   "split_dir": "D:\\tea-action\\research_out\\open_set\\S5",
   "known_classes": [
     "Black rot",
@@ -30,7 +30,7 @@
   "imgsz": 640,
   "conf": 0.25,
   "iou": 0.5,
-  "device": "0",
+  "device": "auto",
   "calib_ratio": 0.05,
   "cost_mis": 10.0,
   "cost_ref": 1.0,
@@ -91,9 +91,9 @@
     "energy": {
       "n_known": 464,
       "n_unknown": 443,
-      "auroc": 0.1822,
-      "auprc": 0.4884,
-      "fpr_at_95tpr": 1.0
+      "auroc": 0.8178,
+      "auprc": 0.8258,
+      "fpr_at_95tpr": 0.5819
     },
     "mahalanobis": {
       "n_known": 464,
@@ -112,9 +112,9 @@
     "fusion": {
       "n_known": 464,
       "n_unknown": 443,
-      "auroc": 0.9241,
-      "auprc": 0.9068,
-      "fpr_at_95tpr": 0.2004
+      "auroc": 0.9236,
+      "auprc": 0.9065,
+      "fpr_at_95tpr": 0.2069
     }
   },
   "rejection": {
@@ -135,6 +135,7 @@
         "undetected_rate": 0.5665,
         "referred_boxes": 200,
         "referral_rate": 0.2205,
+        "referral_rate_known": 0.0453,
         "expected_cost": 2840.0
       },
       "tau_cost": 0.1387,
@@ -154,6 +155,7 @@
         "undetected_rate": 0.5665,
         "referred_boxes": 730,
         "referral_rate": 0.8049,
+        "referral_rate_known": 0.625,
         "expected_cost": 760.0
       }
     },
@@ -174,6 +176,7 @@
         "undetected_rate": 0.5665,
         "referred_boxes": 211,
         "referral_rate": 0.2326,
+        "referral_rate_known": 0.0453,
         "expected_cost": 2741.0
       },
       "tau_cost": 0.1279,
@@ -193,35 +196,37 @@
         "undetected_rate": 0.5665,
         "referred_boxes": 739,
         "referral_rate": 0.8148,
+        "referral_rate_known": 0.6444,
         "expected_cost": 769.0
       }
     },
     "energy": {
-      "tau_calib": 2.112246,
+      "tau_calib": -1.087447,
       "calib": {
-        "tau": 2.112246,
+        "tau": -1.087447,
         "known_boxes": 464,
-        "known_false_rejection": 31,
-        "known_false_rejection_rate": 0.0668,
+        "known_false_rejection": 21,
+        "known_false_rejection_rate": 0.0453,
         "unknown_gt_boxes": 1022,
         "unknown_detected_boxes": 443,
-        "unknown_rejected": 0,
-        "unknown_recall": 0.0,
-        "unknown_recall_detected": 0.0,
-        "misdiagnosed_boxes": 443,
-        "misdiagnosis_rate": 0.4335,
+        "unknown_rejected": 179,
+        "unknown_recall": 0.1751,
+        "unknown_recall_detected": 0.4041,
+        "misdiagnosed_boxes": 264,
+        "misdiagnosis_rate": 0.2583,
         "undetected_rate": 0.5665,
-        "referred_boxes": 31,
-        "referral_rate": 0.0342,
-        "expected_cost": 4461.0
+        "referred_boxes": 200,
+        "referral_rate": 0.2205,
+        "referral_rate_known": 0.0453,
+        "expected_cost": 2840.0
       },
-      "tau_cost": -1.0682,
-      "cost": 907.0,
+      "tau_cost": -1.8527,
+      "cost": 749.0,
       "cost_optimal": {
-        "tau": -1.068238,
+        "tau": -1.852699,
         "known_boxes": 464,
-        "known_false_rejection": 464,
-        "known_false_rejection_rate": 1.0,
+        "known_false_rejection": 306,
+        "known_false_rejection_rate": 0.6595,
         "unknown_gt_boxes": 1022,
         "unknown_detected_boxes": 443,
         "unknown_rejected": 443,
@@ -230,9 +235,10 @@
         "misdiagnosed_boxes": 0,
         "misdiagnosis_rate": 0.0,
         "undetected_rate": 0.5665,
-        "referred_boxes": 907,
-        "referral_rate": 1.0,
-        "expected_cost": 907.0
+        "referred_boxes": 749,
+        "referral_rate": 0.8258,
+        "referral_rate_known": 0.6595,
+        "expected_cost": 749.0
       }
     },
     "mahalanobis": {
@@ -252,6 +258,7 @@
         "undetected_rate": 0.5665,
         "referred_boxes": 611,
         "referral_rate": 0.6736,
+        "referral_rate_known": 0.3621,
         "expected_cost": 611.0
       },
       "tau_cost": 557.7111,
@@ -271,6 +278,7 @@
         "undetected_rate": 0.5665,
         "referred_boxes": 551,
         "referral_rate": 0.6075,
+        "referral_rate_known": 0.2328,
         "expected_cost": 551.0
       }
     },
@@ -291,6 +299,7 @@
         "undetected_rate": 0.5665,
         "referred_boxes": 63,
         "referral_rate": 0.0695,
+        "referral_rate_known": 0.0862,
         "expected_cost": 4263.0
       },
       "tau_cost": 0.2032,
@@ -310,16 +319,17 @@
         "undetected_rate": 0.5665,
         "referred_boxes": 880,
         "referral_rate": 0.9702,
+        "referral_rate_known": 0.9418,
         "expected_cost": 880.0
       }
     },
     "fusion": {
-      "tau_calib": 0.179247,
+      "tau_calib": 0.191005,
       "calib": {
-        "tau": 0.179247,
+        "tau": 0.191005,
         "known_boxes": 464,
-        "known_false_rejection": 165,
-        "known_false_rejection_rate": 0.3556,
+        "known_false_rejection": 159,
+        "known_false_rejection_rate": 0.3427,
         "unknown_gt_boxes": 1022,
         "unknown_detected_boxes": 443,
         "unknown_rejected": 443,
@@ -328,14 +338,15 @@
         "misdiagnosed_boxes": 0,
         "misdiagnosis_rate": 0.0,
         "undetected_rate": 0.5665,
-        "referred_boxes": 608,
-        "referral_rate": 0.6703,
-        "expected_cost": 608.0
+        "referred_boxes": 602,
+        "referral_rate": 0.6637,
+        "referral_rate_known": 0.3427,
+        "expected_cost": 602.0
       },
-      "tau_cost": 0.3883,
+      "tau_cost": 0.3699,
       "cost": 545.0,
       "cost_optimal": {
-        "tau": 0.388255,
+        "tau": 0.36995,
         "known_boxes": 464,
         "known_false_rejection": 102,
         "known_false_rejection_rate": 0.2198,
@@ -349,6 +360,7 @@
         "undetected_rate": 0.5665,
         "referred_boxes": 545,
         "referral_rate": 0.6009,
+        "referral_rate_known": 0.2198,
         "expected_cost": 545.0
       }
     }
@@ -381,13 +393,13 @@
       "energy": {
         "n_known": 464,
         "n_unknown": 443,
-        "aurc": 0.735,
-        "e_aurc": 0.0068,
-        "coverage_at_5pct": 0.0,
-        "coverage_at_10pct": 0.0,
+        "aurc": 0.2427,
+        "e_aurc": 0.0011,
+        "coverage_at_5pct": 0.2084,
+        "coverage_at_10pct": 0.237,
         "n_images": 726,
-        "aurc_image": 0.7684,
-        "e_aurc_image": 0.0085
+        "aurc_image": 0.2452,
+        "e_aurc_image": 0.0014
       },
       "mahalanobis": {
         "n_known": 464,
@@ -414,12 +426,12 @@
       "fusion": {
         "n_known": 464,
         "n_unknown": 443,
-        "aurc": 0.1786,
+        "aurc": 0.1788,
         "e_aurc": 0.0009,
-        "coverage_at_5pct": 0.43,
-        "coverage_at_10pct": 0.4576,
+        "coverage_at_5pct": 0.4267,
+        "coverage_at_10pct": 0.4653,
         "n_images": 726,
-        "aurc_image": 0.1865,
+        "aurc_image": 0.1868,
         "e_aurc_image": 0.0011
       }
     },
@@ -458,7 +470,7 @@
       },
       {
         "cost_ratio": 2.0,
-        "tau": 0.3883,
+        "tau": 0.3699,
         "misdiagnosis_rate": 0.0,
         "referral_rate": 0.6009,
         "expected_cost": 545.0,
@@ -466,7 +478,7 @@
       },
       {
         "cost_ratio": 5.0,
-        "tau": 0.3883,
+        "tau": 0.3699,
         "misdiagnosis_rate": 0.0,
         "referral_rate": 0.6009,
         "expected_cost": 545.0,
@@ -474,7 +486,7 @@
       },
       {
         "cost_ratio": 10.0,
-        "tau": 0.3883,
+        "tau": 0.3699,
         "misdiagnosis_rate": 0.0,
         "referral_rate": 0.6009,
         "expected_cost": 545.0,
@@ -482,7 +494,7 @@
       },
       {
         "cost_ratio": 20.0,
-        "tau": 0.3883,
+        "tau": 0.3699,
         "misdiagnosis_rate": 0.0,
         "referral_rate": 0.6009,
         "expected_cost": 545.0,
@@ -490,7 +502,7 @@
       },
       {
         "cost_ratio": 50.0,
-        "tau": 0.3883,
+        "tau": 0.3699,
         "misdiagnosis_rate": 0.0,
         "referral_rate": 0.6009,
         "expected_cost": 545.0,
@@ -498,7 +510,7 @@
       },
       {
         "cost_ratio": 100.0,
-        "tau": 0.3883,
+        "tau": 0.3699,
         "misdiagnosis_rate": 0.0,
         "referral_rate": 0.6009,
         "expected_cost": 545.0,
@@ -507,7 +519,7 @@
     ],
     "recommend": {
       "cost_ratio": 10.0,
-      "tau": 0.3883,
+      "tau": 0.3699,
       "misdiagnosis_rate": 0.0,
       "referral_rate": 0.6009,
       "expected_cost": 545.0,
@@ -540,5 +552,5 @@
     "τ_cost 在 eval 已知 + 全部 unknown 上扫描，仅用于 RQ5 代价敏感性分析；",
     "融合权重拟合仍使用 unknown 检测框，存在轻度乐观偏差，论文需注明。"
   ],
-  "conclusion": "AUROC 最高的打分器为 `fusion`（AUROC=0.9241）；在 calib τ 下未知召回 43.35%、误诊率 0.00%、转人工率 67.03%、期望代价 608.0000。结论解读需结合多组划分与多 seed，避免单组偶然性。"
+  "conclusion": "AUROC 最高的打分器为 `fusion`（AUROC=0.9236）；在 calib τ 下未知召回 43.35%、误诊率 0.00%、转人工率 66.37%、期望代价 602.0000。结论解读需结合多组划分与多 seed，避免单组偶然性。"
 }
